@@ -1,0 +1,358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{226EC47A-8C3A-41AF-BB3A-FA55E0B6D224}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BH_CalendarMaker</RootNamespace>
+    <AssemblyName>BH_CalendarMaker</AssemblyName>
+    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <TargetFrameworkProfile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>calendar-blue.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BH_Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BH_Core\BH_Core\bin\Release\BH_Core.dll</HintPath>
+    </Reference>
+    <Reference Include="BH_DbConnect, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BH_DbConnect\BH_DbConnect\bin\Release\BH_DbConnect.dll</HintPath>
+    </Reference>
+    <Reference Include="BH_Library, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BH_Library\BH_Library\bin\Release\BH_Library.dll</HintPath>
+    </Reference>
+    <Reference Include="BH_Report, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\BH_Report\BH_Report\bin\Release\BH_Report.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Remoting" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationClient" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Anniversary\ctlCalendarView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Anniversary\ctlCalendarView.Designer.cs">
+      <DependentUpon>ctlCalendarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\ctlDay.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Anniversary\ctlDay.Designer.cs">
+      <DependentUpon>ctlDay.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\ctlMonth.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Anniversary\ctlMonth.Designer.cs">
+      <DependentUpon>ctlMonth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\frmAnniversaryInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anniversary\frmAnniversaryInfo.Designer.cs">
+      <DependentUpon>frmAnniversaryInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\frmCalendarView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anniversary\frmCalendarView.Designer.cs">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\frmAnniversaryList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anniversary\frmAnniversaryList.Designer.cs">
+      <DependentUpon>frmAnniversaryList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\frmExportExcel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Anniversary\frmExportExcel.Designer.cs">
+      <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Anniversary\SqlManager.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmLock.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmLock.Designer.cs">
+      <DependentUpon>frmLock.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Main\frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Main\frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Login\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Login\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Anniversary\ctlCalendarView.resx">
+      <DependentUpon>ctlCalendarView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\ctlDay.resx">
+      <DependentUpon>ctlDay.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\ctlMonth.resx">
+      <DependentUpon>ctlMonth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\frmAnniversaryInfo.resx">
+      <DependentUpon>frmAnniversaryInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\frmCalendarView.resx">
+      <DependentUpon>frmCalendarView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\frmAnniversaryList.resx">
+      <DependentUpon>frmAnniversaryList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Anniversary\frmExportExcel.resx">
+      <DependentUpon>frmExportExcel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmLock.resx">
+      <DependentUpon>frmLock.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Main\frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Login\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BH_CalendarMaker.Data\BH_CalendarMaker.Data.csproj">
+      <Project>{8EA77C2A-98F2-41D3-8789-785722AC1CF5}</Project>
+      <Name>BH_CalendarMaker.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\BH_CalendarMaker.Interface\BH_CalendarMaker.Interface.csproj">
+      <Project>{bb80ae38-db83-44a7-a98d-99ce12749a94}</Project>
+      <Name>BH_CalendarMaker.Interface</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\A3.xlsx" />
+    <None Include="Resources\A5.xlsx" />
+    <None Include="Resources\calendar-blue.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\조회.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\조회_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\프로그램종료.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\application_view_detail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bgLogin.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\camera.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\DrawingPin2_Blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Lock.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Login.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture_add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture_delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sending.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\sendMail.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\기초정보.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\기초정보_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\닫기_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\도움말.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\새메세지2_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\세메세지_알림2_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\입력.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\입력_32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\loginBg.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\about.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="calendar-blue.ico" />
+    <None Include="Resources\003-folder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Setting\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>이 프로젝트는 이 컴퓨터에 없는 NuGet 패키지를 참조합니다. 해당 패키지를 다운로드하려면 NuGet 패키지 복원을 사용하십시오. 자세한 내용은 http://go.microsoft.com/fwlink/?LinkID=322105를 참조하십시오. 누락된 파일은 {0}입니다.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

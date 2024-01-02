@@ -1,0 +1,91 @@
+﻿1. EntityFramework NuGet 패키지를 프로젝트에 추가
+2. App.config 에 <connectionStrings> 연결스트링 내용 </connectionStrings>아래와 같이 추가 
+
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+  <configSections> ...</configSections> 
+  <startup> ... </startup>
+
+  <connectionStrings>
+    <add name="BlogContext"
+      connectionString=""
+      providerName="System.Data.SqlClient"/>
+  </connectionStrings>
+
+  <entityFramework> ... </entityFramework>
+</configuration>
+
+
+3. 클래스의 구성
+
+
+    public class BlogContext : DbContext
+    {
+        public BlogContext() : base("name=BlogContext")
+        {
+        }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+        }
+
+        public virtual IDbSet<Blog> Blogs { get; set; }
+    }
+
+    [Table("Blog")]
+    public class Blog
+    {
+        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public int Seq { get; set; }
+
+        public int BlogId { get; set; }
+        public string Name { get; set; }
+        public string Url { get; set; }
+    }
+
+4. 프로그램 실행
+
+	using (var db = new BlogContext())
+	{
+		db.Blogs.Add(new Blog { Name = "Another Blog " });
+		db.SaveChanges();
+
+		foreach (var blog in db.Blogs)
+		{
+			Console.WriteLine(blog.Name);
+		}
+	}    
+
+	-> 이렇게 하면 디비가 생성됨
+
+5. 테이블 수정
+  패키지 관리자 콘솔에서 
+  
+  Enable-Migrations
+
+  명령 실행
+  -> Migrations 폴더가 생성됨
+  
+6. 테이블 클래스를 수정함
+
+7. 디비에 반영 준비
+  패키지 관리자 콜솔에서 
+
+  Add-Migration 이름을맘대로지정을해라
+
+  명령 실행
+  -> Migrations 폴더 아래 수정 내역이 cs파일로 생성됨
+
+8. 상세수정
+  추가된 cs파일을 상세 수정할 수 있음. 
+  인덱싱이라든지 기타 등등
+
+9. 디비에 수정내역 반영
+  패키지 관리자 콜솔에서 
+
+  Update-Database
+
+  명령 실행
+ 
+끝.
