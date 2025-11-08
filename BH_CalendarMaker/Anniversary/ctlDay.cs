@@ -1,4 +1,5 @@
 ﻿using BH_CalendarMaker.Interface.Helper.Code;
+using BH_CalendarMaker.Interface.Helper.Swa;
 using BH_CalendarMaker.Interface.Model;
 using System;
 using System.Collections.Generic;
@@ -40,7 +41,8 @@ namespace BH_CalendarMaker.Anniversary
 
         public void LoadInfo(List<AnniversaryModel> anniversaryList)
         {
-            txtContent.Text = "";
+            txtContent.Text = Date.ToOADate().ToSWA();
+            bool flag = true;
             var lstTarget = anniversaryList.Where(x => x.Anniversary == Date ||
             (x.DateType == CodeType_날짜구분.양력 && x.date == strDate) ||
             (x.DateType == CodeType_날짜구분.음력 && x.date == strMoon)).ToList();
@@ -57,8 +59,11 @@ namespace BH_CalendarMaker.Anniversary
                         break;
                 }
 
-                if (string.IsNullOrEmpty(txtContent.Text))
-                    txtContent.Text = data.name;
+                if (flag)
+                {
+                    txtContent.Text += $" {data.name}";
+                    flag = false;
+                }
                 else
                     txtContent.Text += Environment.NewLine + data.name;
             }

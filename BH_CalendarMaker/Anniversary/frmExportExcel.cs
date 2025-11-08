@@ -1,5 +1,6 @@
 ﻿using BH_CalendarMaker.Interface.Helper.Anniversary;
 using BH_CalendarMaker.Interface.Helper.Code;
+using BH_CalendarMaker.Interface.Helper.Swa;
 using BH_CalendarMaker.Interface.Model;
 using BH_CalendarMaker.Properties;
 using BH_Core.Forms;
@@ -272,8 +273,9 @@ namespace BH_CalendarMaker.Anniversary
                             var lstTarget = AnniversaryList.Where(x => x.Anniversary == sdt ||
                                                                  (x.DateType == CodeType_날짜구분.양력 && x.date == strDate) ||
                                                                  (x.DateType == CodeType_날짜구분.음력 && x.date == strMoon)).ToList().OrderBy(x => x.category);
-                            celVal = "";
-                            int celStrIdx = 1;
+                            celVal = sdt.Date.ToOADate().ToSWA() + " ";
+                            ws.Cells[week + 2, dw] = celVal;
+                            int celStrIdx = 2;
                             foreach (AnniversaryModel data in lstTarget)
                             {
                                 celVal += data.name + Environment.NewLine;
@@ -287,19 +289,19 @@ namespace BH_CalendarMaker.Anniversary
                                         Color textColor = Color.Red;
                                         if (cate == CodeType_기념일구분.생일)
                                             textColor = Color.Blue;
-                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length].Font.Color = textColor;
+                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length + 1].Font.Color = textColor;
                                         break;
                                     case CodeType_기념일구분.기념일:
-                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length].Font.Color = Color.Blue;
+                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length + 1].Font.Color = Color.Blue;
                                         break;
                                     default:
-                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length].Font.Color = Color.Black;
+                                        ((Excel.Range)ws.Cells[week + 2, dw]).Characters[celStrIdx, data.name.Length + 1].Font.Color = Color.Black;
                                         break;
                                 }
 
-                                celStrIdx = celVal.Length + 1;
+                                celStrIdx = celVal.Length + 2;
                             }
-
+                            ((Excel.Range)ws.Cells[week + 2, dw]).Characters[1, 2].Font.Size = 25;
                             //해당 날짜가 해당월의 날이 아닌 경우 색상 변경
                             if (sdt.Year == dt.Year && sdt.Month == dt.Month)
                             {

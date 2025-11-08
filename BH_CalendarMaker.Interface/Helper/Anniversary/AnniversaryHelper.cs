@@ -21,7 +21,7 @@ namespace BH_CalendarMaker.Interface.Helper.Anniversary
         {
             
             AnniversaryModel model = null;
-            string serviceKey = "yWevBZP%2FjDRdODyPDrOZVSKFQXbNIgvVlrkX%2F3S5Q2ARzoZ8i3oNZWSlybHZ4JEvZMTVzJApcOUbw%2FtYN2SaGA%3D%3D";
+            string serviceKey = "SJulnEak1pme22T%2FRpaabOImVXHhugNRW9zSEgXdV5ekhTC0lmwlyrxVljHFszzAqEnhtnbpHWfxw4b7rbh4cA%3D%3D";
 
             #region 국경일(공휴일)을 출력한다.
 

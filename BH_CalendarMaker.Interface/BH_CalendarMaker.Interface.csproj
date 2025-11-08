@@ -68,6 +68,7 @@
     <Compile Include="Helper\Anniversary\SeasonalEtcDivisionHelper.cs" />
     <Compile Include="Helper\Anniversary\SeasonalDivisionHelper.cs" />
     <Compile Include="Helper\Code\CodeEmuns.cs" />
+    <Compile Include="Helper\Swa\SwaParser.cs" />
     <Compile Include="Model\AnniversaryModel.cs" />
     <Compile Include="Model\CalendarModel.cs" />
     <Compile Include="Model\DayInfo.cs" />
